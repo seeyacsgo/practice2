@@ -36,18 +36,13 @@ public class BankAccount {
     private static String bankName;
 
     static {
-        // TODO: bankName = "Java Bank"; выведите "Банковская система инициализирована"
-        // ▼ ВАШ КОД ЗДЕСЬ ▼
-
-        // ▲ КОНЕЦ ВАШЕГО КОДА ▲
+        bankName = "Java Bank";
+        System.out.println("Банковская система инициализирована");
     }
 
     {
-        // TODO: totalAccounts++; выведите "Создание счёта #" + totalAccounts
-        // ▼ ВАШ КОД ЗДЕСЬ ▼
-totalAccounts++;
-        System.out.println("hi");
-        // ▲ КОНЕЦ ВАШЕГО КОДА ▲
+        totalAccounts++;
+        System.out.println("Создание счёта #" + totalAccounts);
     }
 
     /**
@@ -55,18 +50,20 @@ totalAccounts++;
      * accountNumber = "ACC-" + totalAccounts
      */
     public BankAccount(String owner, double initialBalance) {
-        // ▼ ВАШ КОД ЗДЕСЬ ▼
-
-        // ▲ КОНЕЦ ВАШЕГО КОДА ▲
+        this.owner = owner;
+        this.balance = initialBalance;
+        this.accountNumber = "ACC-" + totalAccounts;
     }
 
     /**
      * Если amount <= 0 — сообщение об ошибке и выход без изменения баланса.
      */
     public void deposit(double amount) {
-        // ▼ ВАШ КОД ЗДЕСЬ ▼
-
-        // ▲ КОНЕЦ ВАШЕГО КОДА ▲
+        if (amount <= 0) {
+            System.out.println("Ошибка: сумма должна быть положительной");
+            return;
+        }
+        balance += amount;
     }
 
     /**
@@ -74,15 +71,19 @@ totalAccounts++;
      * Иначе уменьшите balance.
      */
     public void withdraw(double amount) {
-        // ▼ ВАШ КОД ЗДЕСЬ ▼
-
-        // ▲ КОНЕЦ ВАШЕГО КОДА ▲
+        if (amount <= 0) {
+            System.out.println("Ошибка: сумма должна быть положительной");
+            return;
+        }
+        if (balance < amount) {
+            System.out.println("Ошибка: недостаточно средств");
+            return;
+        }
+        balance -= amount;
     }
 
     public static int getTotalAccounts() {
-        // ▼ ВАШ КОД ЗДЕСЬ ▼
-        return 0; // TODO: верните totalAccounts
-        // ▲ КОНЕЦ ВАШЕГО КОДА ▲
+        return totalAccounts;
     }
 
     /**
@@ -91,9 +92,7 @@ totalAccounts++;
      */
     @Override
     public String toString() {
-        // ▼ ВАШ КОД ЗДЕСЬ ▼
-        return ""; // TODO: реализуйте формат выше
-        // ▲ КОНЕЦ ВАШЕГО КОДА ▲
+        return String.format("[%s] %s: %.2f руб.", accountNumber, owner, balance);
     }
 
     public static void main(String[] args) {

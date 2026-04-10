@@ -40,9 +40,11 @@ public class GradeJournal {
      * Не забудьте привести к double перед делением.
      */
     public static double average(int[] grades) {
-        // ▼ ВАШ КОД ЗДЕСЬ ▼
-        return 0; // TODO: просуммируйте все элементы, разделите на (double) grades.length
-        // ▲ КОНЕЦ ВАШЕГО КОДА ▲
+        int sum = 0;
+        for (int grade : grades) {
+            sum += grade;
+        }
+        return (double) sum / grades.length;
     }
 
     /**
@@ -52,9 +54,13 @@ public class GradeJournal {
      * и обновляйте максимум.
      */
     public static int max(int[] grades) {
-        // ▼ ВАШ КОД ЗДЕСЬ ▼
-        return 0; // TODO: начните с grades[0], пройдите циклом, обновляйте максимум
-        // ▲ КОНЕЦ ВАШЕГО КОДА ▲
+        int max = grades[0];
+        for (int i = 1; i < grades.length; i++) {
+            if (grades[i] > max) {
+                max = grades[i];
+            }
+        }
+        return max;
     }
 
     /**
@@ -64,9 +70,13 @@ public class GradeJournal {
      * и обновляйте минимум (if (grades[i] < min) min = grades[i];).
      */
     public static int min(int[] grades) {
-        // ▼ ВАШ КОД ЗДЕСЬ ▼
-        return 0; // TODO: начните с grades[0], пройдите циклом, обновляйте минимум
-        // ▲ КОНЕЦ ВАШЕГО КОДА ▲
+        int min = grades[0];
+        for (int i = 1; i < grades.length; i++) {
+            if (grades[i] < min) {
+                min = grades[i];
+            }
+        }
+        return min;
     }
 
     // === Метод main ===
@@ -74,7 +84,6 @@ public class GradeJournal {
     public static void main(String[] args) {
         System.out.println("=== Журнал оценок ===");
 
-        // ▼ ВАШ КОД ЗДЕСЬ ▼
         for (int i = 0; i < names.length; i++) {
             System.out.printf("%-8s| Оценок: %d | Средний: %.2f | Мин: %d | Макс: %d%n",
                     names[i], grades[i].length, average(grades[i]), min(grades[i]), max(grades[i]));
@@ -89,6 +98,5 @@ public class GradeJournal {
             }
         }
         System.out.printf("%nЛучший студент: %s (средний балл: %.2f)%n", bestName, bestAvg);
-        // ▲ КОНЕЦ ВАШЕГО КОДА ▲
     }
 }

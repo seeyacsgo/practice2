@@ -48,14 +48,12 @@ public class MatrixOperations {
      * После каждой строки: System.out.println();
      */
     public static void print(int[][] matrix) {
-        // ▼ ВАШ КОД ЗДЕСЬ ▼
         for (int[] row : matrix) {
             for (int v : row) {
                 System.out.printf("%4d", v);
             }
             System.out.println();
         }
-        // ▲ КОНЕЦ ВАШЕГО КОДА ▲
     }
 
     /**
@@ -114,11 +112,10 @@ public class MatrixOperations {
      */
     public static int diagonalSum(int[][] matrix) {
         int sum = 0;
-        // ▼ ВАШ КОД ЗДЕСЬ ▼
-       // for (int i = 0; i < ?; i++) {
-       //     sum += matrix[?][?];
-        //}
-        // ▲ КОНЕЦ ВАШЕГО КОДА ▲
+        int size = Math.min(matrix.length, matrix[0].length);
+        for (int i = 0; i < size; i++) {
+            sum += matrix[i][i];
+        }
         return sum;
     }
 
